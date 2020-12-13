@@ -14,13 +14,6 @@ $email = $_POST['email'];
 $gender = $_POST['gender'];
 $dob = date('Y-m-d', strtotime($_POST['dob']));
 $password = $_POST['password'];
-
-/*$firstname = "Matti";
-$lastname = "Meikäläinen";
-$email ="matti12@gmail.com";
-$gender = "m";
-$dob = "1999-10-20";
-$password = "Matti123";*/
 $salt = "st";
 
 $isValidEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
