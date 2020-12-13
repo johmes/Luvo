@@ -7,8 +7,6 @@ if (isset($_SESSION['loggedin'])) {
   exit();
 }
  ?>
-
-
 <!DOCTYPE html>
 <html>
 <title>Luvo- Log In or Sign Up</title>
@@ -152,17 +150,6 @@ if (isset($_SESSION['loggedin'])) {
 }
   </style>
 <body>
-
-  <!--<div class="mainbar">
-    <div class="topnavleft">
-      <h4>socialApp</h4>
-        <a href="javascript:void(0);" class="image" onclick="myFunction()">
-          <img src="637291596794564217.jpg"></img>
-        </a>
-    </div>
-    <div class="topnavright" id="topnavright">
-    </div>
-  </div>-->
 <div class="main">
   <div class="main_logo">
     <h1>Luvo</h1>
@@ -170,27 +157,14 @@ if (isset($_SESSION['loggedin'])) {
   <div class="header">
 
     <form class="login" action="authenticate.php" method="post">
-      <!--<h2 style="color: #000;">Login</h2>-->
-
-      <!--<div class="form-group">-->
-        <!--<label for="email">Email</label>-->
         <input class="form-control" type="text" placeholder="Phone Number or Email"
         name="phone_or_email" aria-label="Phone Number or Email" autofocus />  <!--required-->
-      <!--</div>-->
         <div class="form-group">
-          <!--<label for="password">Password</label>-->
           <input class="form-control" type="password" placeholder="Password" name="pwd" /> <!--required-->
         </div>
-
-        <!--<div class="form-group-box">
-          <input class="form-control-box" type="checkbox" checked="checked" name="remember"></input>
-          <label for="remember-me">Remember me</label>
-        </div>-->
-
         <div class="form-group">
           <div><input type="submit" class="btn" name="login" value="Log In"></input></div>
         </div>
-
       </form>
       <div class="forgot_account_link">
         <a href="#">Forgot passoword?</a>
@@ -202,8 +176,6 @@ if (isset($_SESSION['loggedin'])) {
     </div>
   </div>
 </div>
-
-
   <?php
     $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
@@ -221,6 +193,5 @@ if (isset($_SESSION['loggedin'])) {
             //exit();
           }
    ?>
-
 </body>
 </html>
