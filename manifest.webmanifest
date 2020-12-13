@@ -1,0 +1,15 @@
+{
+  "name": "Luvo",
+  "short_name": "Luvo",
+  "start_url":".",
+  "display":"standalone",
+  "background_color":"#fff",
+  "description":"Keep your budget easy.",
+  "icons": [
+    {
+      "src":"img/Luvo_logo.png",
+      "sizes":"512x512",
+      "type":"image/png"
+    }
+  ]
+}
