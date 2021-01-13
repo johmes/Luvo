@@ -1,15 +1,9 @@
 <?php
-$mainpage = 'settings';
-$subpage = 'notification';
-$title= 'Luvo - Notification settings';
-// configuration
-include 'config.php';
-session_start();
-if (!isset($_SESSION['loggedin'])) {
-  header('location: profile_management/login.php');
-  exit();
-}
+require "includes/page-init.inc.php";
 $user_id = $_SESSION["user_id"];
+$mainpage = 'notification';
+$subpage = 'notification';
+$title= 'Settings | Luvo';
  ?>
 
  <!DOCTYPE html>
@@ -28,7 +22,7 @@ $user_id = $_SESSION["user_id"];
    </head>
    <body>
      <div>
-       <?php include "sort_list.php"; ?>
+       <?php include "mainmenubar.php"; ?>
      </div>
      <div>
        <?php include "settings_menu.php" ?>

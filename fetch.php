@@ -6,11 +6,9 @@ $userquery = mysqli_query($conn, "SELECT * FROM users WHERE firstname LIKE '" . 
 
 if (mysqli_num_rows($userquery)  > 0) {
   echo "<h4 align='center'>Result</h4>";
-  while($row = mysqli_fetch_array($userquery, MYSQLI_ASSOC)) { //, MYSQLI_ASSOC
-
+  while($row = mysqli_fetch_array($userquery, MYSQLI_ASSOC)) {
     $firstname = $row['firstname'];
     $lastname = $row['lastname'];
-    //echo "<ul class='searchHistory'><a href='#profile'>" . $firstname . " " . $lastname . "</a></ul>";
     echo "<li class='resultList'><a href='#profile'>" . $firstname . " " . $lastname . "</a></li>";
   }
 } else {

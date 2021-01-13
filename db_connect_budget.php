@@ -1,19 +1,17 @@
 <?php
   //configuration
-  include 'config.php';
+  include 'includes/config.inc.php';
 
   if(isset($_POST['submit'])) {
-    $type = isset($_POST['type']) ? $_POST['type'] : null;
-    $name = isset($_POST['purchase_name']) ? $_POST['purchase_name'] : null;
-    $location = isset($_POST['location_name']) ? $_POST['location_name'] : null;
-    $category = isset($_POST['category']) ? $_POST['category'] : null;
-    $price = isset($_POST['purchase_price']) ? $_POST['purchase_price'] : null;
-    $date_created = isset($_POST['date_created']) ? $_POST['date_created'] : null;
-    $admin_id = isset($_POST['admin_id']) ? $_POST['admin_id'] : null;
+    $name = htmlentities(mysqli_real_escape_string($conn, $_POST['purchase_name']));
+    $location = htmlentities(mysqli_real_escape_string($conn, $_POST['location_name']));
+    $price = htmlentities(mysqli_real_escape_string($conn, $_POST['purchase_price']));
+    $category = htmlentities(mysqli_real_escape_string($conn, $_POST['category']));
+    $type = $_POST['type'];
+    $date_created = $_POST['date_created'];
+    $admin_id = $_POST['admin_id'];
 
-    $name = htmlentities(mysqli_real_escape_string($conn, $name));
-    $location = htmlentities(mysqli_real_escape_string($conn, $location));
-    $price = htmlentities(mysqli_real_escape_string($conn, $price));
+
 
     $name = stripcslashes($name);
     $location = stripcslashes($location);
@@ -62,13 +60,13 @@
     $query = "INSERT INTO budget (type, name, location, category, price, file_dir, date_created, admin)
      VALUES('$type', '$name', '$location', '$category', '$price', '$target_fileDir', '$date_created', '$admin_id')";
      mysqli_query($conn, $query);
-     header("location: home.php");
+     header("location: index.php");
      exit();
   }
   if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $conn->query("DELETE FROM budget WHERE id = $id") or die($conn->error());
-    header("location: home.php");
+    header("location: index.php");
     exit();
   }
  ?>

@@ -4,12 +4,20 @@
   "start_url":".",
   "display":"standalone",
   "background_color":"#fff",
+  "theme_color":"#fff",
   "description":"Keep your budget easy.",
   "icons": [
     {
       "src":"img/Luvo_logo.png",
       "sizes":"512x512",
-      "type":"image/png"
+      "type":"image/png",
+      "purpose": "any"
+    },
+    {
+      "src":"img/Luvo_logo_196x196.png",
+      "sizes":"196x196",
+      "type":"image/png",
+      "purpose": "any maskable"
     }
   ]
 }

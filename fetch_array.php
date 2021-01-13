@@ -1,6 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "") or die("Couldn't connect to the server!");
-mysqli_select_db($conn, "budgetsection") or die("This database could not be found!");
+include 'includes/config.inc.php';
 
 $rowperpage = 5;
 
@@ -16,7 +15,7 @@ $feedquery = mysqli_query($conn, "SELECT * FROM budget WHERE name LIKE '%" . $_G
 
 if (mysqli_num_rows($feedquery)  > 0) {
   $result = mysqli_query($conn, "SELECT SUM(price) as total FROM budget") or die(mysqli_error($conn));
-  while($row = mysqli_fetch_array($feedquery, MYSQLI_ASSOC)): //, MYSQLI_ASSOC
+  while($row = mysqli_fetch_array($feedquery, MYSQLI_ASSOC)):
     $id = $row['id'];
     $name = $row['name'];
     $price = $row['price'];
@@ -24,7 +23,7 @@ if (mysqli_num_rows($feedquery)  > 0) {
     $location = $row['location'];
     $category = $row['category'];
     $file_dir = $row['file_dir'];
-    //IF PRICE BELOW 0, ORANGE. IF ABOVE 0, GREEN.
+
     $priceColor = ($price > 0) ? "#52BE80" : "#f0ad4e";
     include "post.php";
   endwhile;

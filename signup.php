@@ -1,20 +1,21 @@
 <?php
+if ($_SERVER['HTTPS'] != "on") {
+  $redirect= "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+  header("location: $redirect");
+}
 // configuration
 session_start();
-include 'userconfig.php';
-if (isset($_SESSION['loggedin'])) {
-  header('location: ../home.php');
-  exit();
-}
+include 'includes/config.inc.php';
+$mainpage = 'signup';
+$title = "Login or Sign Up | Luvo";
  ?>
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Luvo - Log In or Sign Up</title>
+    <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="bootstrap.css" />
+    <link rel="canonical" href="https://luvo.dev/<?php echo $mainpage; ?>.php"/>
     <link rel="icon" href="img/Luvo_logo.png">
     <style media="screen">
       body {
@@ -28,7 +29,6 @@ if (isset($_SESSION['loggedin'])) {
       * {
         box-sizing: border-box;
       }
-
       /* Change styles for cancel button and signup button on extra small screens */
       @media screen and (max-width: 1015px) {
         .header{
@@ -184,8 +184,8 @@ if (isset($_SESSION['loggedin'])) {
         <h1>Luvo</h1>
       </div>
       <div class="header">
-        <form class="" action="signup.dbh.php" method="post">
-          <?php include 'errors.php'; ?>
+        <form class="" action="profile_management/signup.dbh.php" method="post">
+          <?php include 'profile_management/errors.php'; ?>
 
           <div class="form-group">
             <input id="fname" class="form-control" type="text" placeholder="First name"
@@ -223,13 +223,12 @@ if (isset($_SESSION['loggedin'])) {
           <div class="new_account"><input class="form-control" type="submit" name="submit" value="Sign Up"/></div>
         </div>
       </form>
-      <!--<div class="hr"></div>-->
         <p style="font-size: 14px; float: right; margin-right: 5px;">Already an user? <a href="login.php">Log In</a></p>
       </div>
     </div>
 
     <?php
-      $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+      $fullUrl = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
       if (strpos($fullUrl, "signup=empty") == true) {
         echo '<div role="alert" class="alert"><p class="error">Fill in all fields.</p><div class="cone-up" /></div>';
@@ -242,7 +241,7 @@ if (isset($_SESSION['loggedin'])) {
             exit();
           } elseif (strpos($fullUrl, "signup=notvalid") == true) {
               echo '<div role="alert" class="alert"><p class="error">The username and password that you entered did not match our records. Please double-check and try again.</p><div class="cone-up" /></div>';
-              //exit();
+              exit();
             }
      ?>
   </body>

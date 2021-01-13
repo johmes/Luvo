@@ -5,7 +5,7 @@ session_start();
 include "db_connect_budget.php";
 $user_id = $_SESSION['user_id'];
 $row = $_POST['row'];
-$rowperpage = 4;
+$rowperpage = 5;
 
 // selecting posts
 $query = "SELECT * FROM budget WHERE admin = '$user_id' ORDER BY date_created DESC LIMIT ".$row.",".$rowperpage;
@@ -48,14 +48,14 @@ if (mysqli_num_rows($result)  > 0) {
               <span class='category'>$category</span>
               <div class='dropdown' id='myDropdown_$id'>
                 <span class='glyphicon glyphicon-option-horizontal' id='dots_$id'></span>
-                  <div class='dropdown-content'>
-                    <br>
-                    <a href='?edit=$id'>Edit</a>
-                    <hr>
-                    <a href='?edit=$id'>More Information</a>
-                    <hr>
-                    <a id='delete_transaction_$id' href='db_connect_budget.php?delete=$id'>Delete</a>
-                  </div>
+                <div class='dropdown-content'>
+                  <div class='dropdown_tail'></div>
+                  <a href='edit.php?edit=" . bin2hex($id) . "' title='Edit'>Edit</a>
+                  <hr>
+                  <a href='?info=$id' title='More'>More</a>
+                  <hr>
+                  <a class='danger' id='delete_transaction_$id' href='db_connect_budget.php?delete=$id' title='Delete transaction'>Delete</a>
+                </div>
                 </div>
               </div>
             </div>
@@ -123,7 +123,6 @@ if (mysqli_num_rows($result)  > 0) {
             $html .= '
             const $menu = $("#myDropdown_'.$id.'");
              $(document).mouseup(e => {
-               console.log("At least something works!");
                 if (!$menu.is(e.target)
                 && $menu.has(e.target).length === 0)
                 {
@@ -133,7 +132,6 @@ if (mysqli_num_rows($result)  > 0) {
               ';
             $html .= '
              $(transactionDots).on("click", () => {
-               console.log("Woohoo");
                $menu.toggleClass("is-active");
              });
              closeDropdown.click(function() {

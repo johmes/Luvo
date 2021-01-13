@@ -1,32 +1,30 @@
 <?php
+require "includes/page-init.inc.php";
+$user_id = $_SESSION["user_id"];
 $mainpage = 'settings';
 $subpage = 'security';
-$title= 'Luvo - Security settings';
-// configuration
-include 'config.php';
-session_start();
-if (!isset($_SESSION['loggedin'])) {
-  header('location: profile_management/login.php');
-  exit();
-}
-$user_id = $_SESSION["user_id"];
+$title= 'Settings | Luvo';
  ?>
 
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
    <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
-     <title><?php echo $title; ?></title>
+     <meta charset="utf-8" />
+     <link rel="icon" type="image/png" href="img/Luvo_logo.png">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="description" content="Budget App For Keeping Your Financial Life Easy.">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     <script src="script.js"></script>
+     <script type="text/javascript" src="script.js"></script>
      <link rel="stylesheet" type="text/css" href="bootstrap.css" />
      <link rel="stylesheet" type="text/css" href="style.css" />
-     <link rel="icon" href="img/Luvo_logo.png">
+     <link rel="apple-touch-icon" href="img/Luvo_logo.png">
+     <link rel="manifest" href="manifest.webmanifest">
+     <title><?php echo $title; ?></title>
    </head>
    <body>
+     <?php include "noscript.php"; ?>
      <div>
-       <?php include "sort_list.php"; ?>
+       <?php include "mainmenubar.php"; ?>
      </div>
      <div>
        <?php include "settings_menu.php" ?>

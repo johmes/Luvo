@@ -11,12 +11,12 @@
      <div class="dropdown" id="myDropdown_<?php echo $id; ?>">
        <span class="glyphicon glyphicon-option-horizontal" id="dots_<?php echo $id; ?>"></span>
        <div class="dropdown-content">
-         <br>
-         <a href="?edit=<?php echo $id; ?>">Edit</a>
+         <div class="dropdown_tail"></div>
+         <a href="edit.php?edit=<?php echo bin2hex($id); ?>" title="Edit">Edit</a>
          <hr>
-         <a href="?info=<?php echo $id; ?>">More Information</a>
+         <a href="?info=<?php echo $id; ?>" title="More">More</a>
          <hr>
-         <a id="delete_transaction_<?php echo $id; ?>" href="db_connect_budget.php?delete=<?php echo $id; ?>">Delete</a>
+         <a class="danger" id="delete_transaction_<?php echo $id; ?>" href="db_connect_budget.php?delete=<?php echo $id; ?>" title="Delete transaction">Delete</a>
        </div>
      </div>
    </div>
@@ -41,8 +41,6 @@
  } else {
    echo "<div class='file_place_default'>
    </div>";
-   /*<img src='img/no-image.png' style='float: left; border-radius: 9px; width: 88%; height: auto;'>
-   </img>*/
  }
  ?>
  <p>
@@ -66,10 +64,6 @@
      down_arrow.css('display', 'block');
      up_arrow.css('display', 'none');
    });
-   /*var count = $(".dropdown-content:visible, true").length;
-   if(count == 1) {
-     alert("soosoo");
-   }*/
    $('#delete_transaction_<?php echo $id; ?>').on('click', () => {
      if (window.confirm("Do you really want to delete transaction?")) {
        return true;
@@ -98,37 +92,5 @@
     closeDropdown.click(function() {
       $menu.removeClass('is-active');
     });
-
-   //dotsDropdown.css('display', 'none');
-   /*transactionDots.click(function() {
-     /*$(function(){
-        var allElems = document.getElementsByClassName('dropdown-content');
-        var count = 0;
-        for (var i = 0; i < allElems.length; i++)
-        {
-            var thisElem = allElems[i];
-            if (thisElem.style.display == 'block') count++;
-            if(count > 1){
-               thisElem.style.display == 'none';
-            }
-        }
-        $(thisElem).css('display', 'none');
-        console.log("dropdown menus open: " + count);
-    });
-     dotsDropdown.css('display', 'block');
-   });*/
-   /* Anything that gets to the document
-      will hide the dropdown */
-      /*if(dotsDropdown.css('display') == 'block') {
-        $(document).click(function(){
-          dotsDropdown.css('display', 'none');
-        });
-      }
-   /* Clicks within the dropdown won't make
-   it past the dropdown itself */
-   /*dotsDropdown.click(function(e){
-     e.stopPropagation();
-   });*/
- });
- //CONFRIM DELETING TRANSACTIONS
+  });
 </script>

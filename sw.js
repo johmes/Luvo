@@ -3,6 +3,7 @@ const statisticAssets = [
   './',
   'home.php',
   'script.js',
+  'jquery-3.5.1.min.js',
   'post.php',
   'style.css',
   'usage.php',
@@ -12,7 +13,10 @@ const statisticAssets = [
   'security.php',
   'notification.php',
   'bootstrap.css',
-  'manifest.webmanifest'
+  'manifest.webmanifest',
+  'img/Luvo_logo.png',
+  'footer.php',
+  'mainmenubar.php'
 ];
 self.addEventListener('install', async e => {
   const cache = await caches.open(cacheName);
