@@ -15,7 +15,7 @@
     <meta name="description" content="Budget App For Keeping Your Financial Life Easy.">
     <script src="jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
-    <link rel="canonical" href="http://luvo.dev"/>
+    <link rel="canonical" href="index.php"/>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="apple-touch-icon" href="img/Luvo_logo.png">
     <link rel="manifest" href="manifest.webmanifest">
